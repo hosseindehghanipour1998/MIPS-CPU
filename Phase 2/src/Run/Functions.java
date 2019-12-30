@@ -32,17 +32,19 @@ public class Functions {
 
 	}
 	
-	public static void decode() {
+	public static int decode() {
 		//Decode
 		System.out.println("\n");
 		System.out.println("Stage : DECODE ");
 		try {
-					Stages.Decode.decode();
+				return Stages.Decode.decode();
 		}
 		
 		catch(Exception e) {
 			System.out.println("########## The Operation Cant be done due to null pointer Exception ##########");
+			return -1 ;
 		}
+		
 
 	}
 

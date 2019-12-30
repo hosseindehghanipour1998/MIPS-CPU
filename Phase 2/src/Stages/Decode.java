@@ -4,11 +4,34 @@ import java.util.ResourceBundle.Control;
 
 import PipeLine.ID_EX;
 import PipeLine.IF_ID;
+import Units.HazardDetectionUnit;
+import Units.InstructionMemory;
+import Units.OperationName;
 import Units.RegisterFile;
 
 public class Decode {
 	
-	public static void decode() {
+	public static int decode() {
+		
+		
+		if(IF_ID.instruction.getOperation() == OperationName.JUMP) {
+			System.out.println("The Operation the Realized to be jump At Decode Stage...");
+	
+			 String jumpAmountString = RegisterFile.Rd = IF_ID.instruction.getInstructionRegister().substring( 16 , 32);
+			 int jumpAmount = Integer.parseInt(jumpAmountString , 2) ;
+			 System.out.println("The Jumping Address is : " + jumpAmount);
+			 System.out.println("##### Emergency Reset #####");
+			 if( jumpAmount < 0 ||   jumpAmount >= InstructionMemory.instructionFile.size()) {
+				 System.out.println("Wrong Jump address .... out of bound");
+				 HazardDetectionUnit.throwHazard();
+				 return -1 ;
+			 }
+			 else {
+				 return jumpAmount ;
+			 }
+		}
+		
+		// Implement the beq in here.
 		
 		Units.ControlUnit.setControls();	
 		
@@ -56,6 +79,7 @@ public class Decode {
 //			int RdIndex = Integer.parseInt(RegisterFile.Rd , 2);
 //			RegisterFile.registerFile[RdIndex] = RegisterFile.data ; 
 //		}
+		return -1 ;
 	}
 
 	

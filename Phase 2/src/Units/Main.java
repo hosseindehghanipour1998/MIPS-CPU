@@ -47,7 +47,7 @@ public class Main {
 		System.out.println("Reading the files...");
 		
 		// IO
-		String instructionsAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\testCase3.txt" ;
+		String instructionsAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\testCase4.txt" ;
 		String dataAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\dataFile3.txt" ;
 		String registerFileAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\registerFile3.txt" ;
 		Utility.readFile(instructionsAddress,inputStringStreamInstructions);
@@ -131,17 +131,17 @@ public class Main {
 	Run.Functions.writeBack();
 	Run.Functions.memoryStage();
 	Run.Functions.execute();
-	Run.Functions.decode();
+	int jumpingIndex  = Run.Functions.decode();
+	if(jumpingIndex != -1) {
+		pc = jumpingIndex ;
+		jumpingIndex = -1 ;
+		
+	}
 	//if(pc < Units.InstructionMemory.instructionFile.size())
-		Run.Functions.fetch(pc);
+	Run.Functions.fetch(pc);
 	Run.Functions.print();
 	
-			
-
-			
-			
-			System.out.println("\n**********************************************************************");
+	System.out.println("\n**********************************************************************");
 		}
-	
 	}
 }

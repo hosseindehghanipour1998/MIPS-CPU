@@ -137,6 +137,10 @@ public class ALU {
 			}
 		}// End of J_Type
 		
+		else {
+			i.setOperation(OperationName.NOP);
+		}
+		
 	}
 	public static void setTheType(Instruction instruction) {
 		
@@ -150,6 +154,7 @@ public class ALU {
 		}
 		catch(Exception e){
 			System.out.println("Unsupported Input");
+			instruction.setType(InstructionType.NOP);
 		}
 		
 		for(Instruction i : Instruction.allPredefinedInstructions) {

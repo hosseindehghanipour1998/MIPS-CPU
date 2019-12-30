@@ -13,5 +13,6 @@ public enum OperationName {
 	BNEQ,
 	LW,
 	SW,
-	JUMP
+	JUMP,
+	NOP
 }

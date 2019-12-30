@@ -1,0 +1,2 @@
+* includes hazard detection unit but functions not implemented
+* supports jump instruction.
