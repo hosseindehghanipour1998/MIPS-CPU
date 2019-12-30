@@ -84,7 +84,7 @@ public class Main {
 		// Run
 		//Run.Functions.initialize();
 		int clockNumber = InstructionMemory.instructionFile.size() + 4 ;
-		for(int i = 0 ; i < clockNumber  ; i++ , pc++) {
+		for(int i = 0 ; i < clockNumber   ; i++ , pc++) {
 			
 			System.out.print("\nClockNo :  ("  + (i+1) + ")\n");
 			System.out.println("PC: " + pc);
@@ -141,6 +141,7 @@ public class Main {
 	//if(pc < Units.InstructionMemory.instructionFile.size())
 	Run.Functions.fetch(pc);
 	Run.Functions.print();
+
 	
 	System.out.println("\n**********************************************************************");
 		}
