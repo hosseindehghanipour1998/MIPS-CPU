@@ -47,9 +47,9 @@ public class Main {
 		System.out.println("Reading the files...");
 		
 		// IO
-		String instructionsAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\testCase4.txt" ;
+		String instructionsAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\testCase6.txt" ;
 		String dataAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\dataFile3.txt" ;
-		String registerFileAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\registerFile3.txt" ;
+		String registerFileAddress = "H:\\Codes\\New Java Codes 15June\\MIPS PipeLine Project\\registerFile6.txt" ;
 		Utility.readFile(instructionsAddress,inputStringStreamInstructions);
 		Utility.readFile(dataAddress, inputStringStreamDataFile);
 		Utility.readFile(registerFileAddress, inputStringStreamRegFile);

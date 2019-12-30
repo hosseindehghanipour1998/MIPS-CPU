@@ -13,20 +13,21 @@ public class HazardDetectionUnit {
 		String ID_EXRegisterRs = RegisterFile.Rs ;
 		String ID_EXRegisterRt = RegisterFile.Rt ;
 		// this function should be called in execution stage.
-		int registersWriteControl = EX_MEM.registerWrite ;
+		
 		
 //		if(MEM_WB.i.getType() == InstructionType.R_TYPE || MEM_WB.i.getOperation() == OperationName.LW) {
 //			registersWriteControl = 1 ;
 //		}
 		
 		//EX hazard
+		int registersWriteControl = EX_MEM.registerWrite ;
 		if( registersWriteControl == 1 && !EX_MEM.DestinationRegister.equals("0")  && EX_MEM.DestinationRegister.equals(ID_EXRegisterRs) ) {
 			throwHazard("Data Hazard.");
 			ID_EX.forwardA = "10" ;	
 		}
 		
-		else if( registersWriteControl == 1 && !EX_MEM.DestinationRegister.equals("0")  && EX_MEM.DestinationRegister.equals(ID_EXRegisterRt) ) {
-			throwHazard("Data Hazard.(EX_HAZARD)");
+		 if( registersWriteControl == 1 && !EX_MEM.DestinationRegister.equals("0")  && EX_MEM.DestinationRegister.equals(ID_EXRegisterRt) ) {
+			throwHazard("Data Hazard.");
 			ID_EX.forwardB = "10" ;	
 		}
 		
@@ -36,7 +37,7 @@ public class HazardDetectionUnit {
 			throwHazard("MEM Hazard");
 			ID_EX.forwardA = "01" ;	
 		}
-		else if( registersWriteControl == 1 && !MemoryStage.forwardingInput.equals("0")  && MemoryStage.forwardingInput.equals(ID_EXRegisterRt) ) {
+		 if( registersWriteControl == 1 && !MemoryStage.forwardingInput.equals("0")  && MemoryStage.forwardingInput.equals(ID_EXRegisterRt) ) {
 			throwHazard("MEM Hazard");
 			ID_EX.forwardB = "01" ;	
 		}

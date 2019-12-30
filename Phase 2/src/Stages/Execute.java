@@ -15,6 +15,9 @@ public class Execute {
 	
 	public static void execute( ) {
 		
+
+		
+		
 		//Detect Hazard :
 		try {
 			HazardDetectionUnit.detectHazard();
@@ -23,8 +26,6 @@ public class Execute {
 			// what can u do ?
 			System.out.println("An Error Occured while detecting Hazard");
 		}
-		
-		
 		
 		// SET The Control Signals
 		Execute.forwardA = ID_EX.forwardA ;
@@ -38,6 +39,7 @@ public class Execute {
 		EX_MEM.muxSignal = ID_EX.muxSignal ;
 		EX_MEM.registerWrite = ID_EX.registerWrite ;
 		
+
 
 			
 		
