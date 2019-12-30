@@ -86,7 +86,8 @@ public class Main {
 		int clockNumber = InstructionMemory.instructionFile.size() + 4 ;
 		for(int i = 0 ; i < clockNumber  ; i++ , pc++) {
 			
-			System.out.print("\nInstruction :  ("  + (i+1) + ")\n");
+			System.out.print("\nClockNo :  ("  + (i+1) + ")\n");
+			System.out.println("PC: " + pc);
 			
 //			// Fetch
 //			System.out.println("\n");

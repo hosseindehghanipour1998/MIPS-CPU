@@ -37,7 +37,9 @@ public class Functions {
 		System.out.println("\n");
 		System.out.println("Stage : DECODE ");
 		try {
-				return Stages.Decode.decode();
+			int returnAmount =  Stages.Decode.decode();
+			System.out.println("The return amount is  :  " + returnAmount);
+			return returnAmount ;
 		}
 		
 		catch(Exception e) {

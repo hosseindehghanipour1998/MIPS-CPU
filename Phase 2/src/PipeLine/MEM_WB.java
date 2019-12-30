@@ -13,6 +13,7 @@ public class MEM_WB {
 	//Control Signals :
 	//wb
 	public static int muxSignal ;
+	public static int registerWrite ;
 	
 	//extra
 	public static Instruction i ;

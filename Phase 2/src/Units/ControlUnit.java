@@ -65,6 +65,10 @@ public class ControlUnit {
 			ID_EX.muxSignal = 1 ;
 		}
 		
+		if(IF_ID.instruction.getOperation() == OperationName.LW || IF_ID.instruction.getType() == InstructionType.R_TYPE) {
+			ID_EX.registerWrite = 1 ;
+		}
+		
 		}
 		
 		

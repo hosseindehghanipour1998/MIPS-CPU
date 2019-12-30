@@ -8,13 +8,14 @@ import Units.Memory;
 public class MemoryStage {
 	
 
-	
+	public static String forwardingInput;
 	public static void MemoryStageRun() {
 	
 			
 		
 		int memoryWriteSignal  = 0;
 		int memoryReadSignal = 0 ;
+		
 		//set write signal
 //		if(PipeLine.EX_MEM.writeSignal == 1) {
 //			memoryWriteSignal  = "1";
@@ -27,9 +28,9 @@ public class MemoryStage {
 		memoryWriteSignal = EX_MEM.writeSignal ;
 		memoryReadSignal = EX_MEM.readSignal ;
 		
-		// transeer control signals to next level
+		// transfer control signals to next level
 		MEM_WB.muxSignal = EX_MEM.muxSignal ;
-		
+		MEM_WB.registerWrite = EX_MEM.registerWrite ;
 		//Memory Inputs
 		Units.Memory.address = PipeLine.EX_MEM.ALU_Result ;
 		Units.Memory.data = PipeLine.EX_MEM.WriteData ;
@@ -56,6 +57,7 @@ public class MemoryStage {
 		}
 		
 		//register destination
+		forwardingInput = PipeLine.MEM_WB.destinationRegister; 
 		PipeLine.MEM_WB.destinationRegister = PipeLine.EX_MEM.DestinationRegister ;
 		
 		

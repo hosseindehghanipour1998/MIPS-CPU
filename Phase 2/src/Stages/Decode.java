@@ -23,7 +23,7 @@ public class Decode {
 			 System.out.println("##### Emergency Reset #####");
 			 if( jumpAmount < 0 ||   jumpAmount >= InstructionMemory.instructionFile.size()) {
 				 System.out.println("Wrong Jump address .... out of bound");
-				 HazardDetectionUnit.throwHazard();
+				 HazardDetectionUnit.throwHazard("");
 				 return -1 ;
 			 }
 			 else {
@@ -71,6 +71,34 @@ public class Decode {
 			
 			ID_EX.Const = RegisterFile.Rd = IF_ID.instruction.getInstructionRegister().substring( 16 , 32);
 			ID_EX.Const = Integer.toString(Integer.parseInt(ID_EX.Const ,2 )) ;
+		}
+		
+		// beq control
+		if(IF_ID.instruction.getOperation() == OperationName.BEQ) {
+			System.out.println("This is a beq Operation ...");
+			
+			int RsIndex = Integer.parseInt(RegisterFile.Rs );
+			int RtIndex = Integer.parseInt(RegisterFile.Rt );
+			ID_EX.RsAmount = RegisterFile.registerFile[RsIndex] ;
+			ID_EX.RtAmount = RegisterFile.registerFile[RtIndex] ;
+			
+			System.out.println("The RS amount is : " + ID_EX.RsAmount);
+			System.out.println("The RT amount is : " + ID_EX.RtAmount);
+			
+			if(Integer.parseInt(ID_EX.RsAmount) == Integer.parseInt(ID_EX.RtAmount)) {
+				System.out.println("The operators are equal. ");
+				System.out.println("The Branching address is : " + ID_EX.Const );
+				if(Integer.parseInt(ID_EX.Const) >= 0 && Integer.parseInt(ID_EX.Const)  < InstructionMemory.instructionFile.size() ) {
+					return Integer.parseInt(ID_EX.Const);
+				}
+				else {
+					System.out.println("The Address doesn't fit right ... address :  " + Integer.parseInt(ID_EX.Const) + " Intructions Size : " + InstructionMemory.instructionFile.size() );
+				}
+			}
+			else {
+				System.out.println("The operands are not equal...");
+				return -1 ;
+			}
 		}
 		
 		System.out.println("The Constant : " + ID_EX.Const);

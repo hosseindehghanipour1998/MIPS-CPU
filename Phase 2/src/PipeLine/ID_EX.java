@@ -21,4 +21,5 @@ public class ID_EX {
 	
 	// WB
 	public static int muxSignal ;
+	public static int registerWrite ;
 }

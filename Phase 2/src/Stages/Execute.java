@@ -4,6 +4,7 @@ import PipeLine.EX_MEM;
 import PipeLine.ID_EX;
 import PipeLine.MEM_WB;
 import Units.ALU;
+import Units.HazardDetectionUnit;
 import Units.InstructionType;
 import Units.OperationName;
 
@@ -13,6 +14,17 @@ public class Execute {
 	public static String forwardA , forwardB ;public static int muxSignal ;
 	
 	public static void execute( ) {
+		
+		//Detect Hazard :
+		try {
+			HazardDetectionUnit.detectHazard();
+		}
+		catch(Exception e) {
+			// what can u do ?
+			System.out.println("An Error Occured while detecting Hazard");
+		}
+		
+		
 		
 		// SET The Control Signals
 		Execute.forwardA = ID_EX.forwardA ;
@@ -24,6 +36,7 @@ public class Execute {
 		EX_MEM.readSignal = ID_EX.readSignal ;
 		EX_MEM.writeSignal = ID_EX.writeSignal ;
 		EX_MEM.muxSignal = ID_EX.muxSignal ;
+		EX_MEM.registerWrite = ID_EX.registerWrite ;
 		
 
 			
